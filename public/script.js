@@ -9,45 +9,47 @@ toggle.addEventListener("click", () => {
   toggle.classList.toggle("fa-moon");
   toggle.classList.toggle("fa-sun");
 
-/* ==================================================
-   📧 EMAILJS (SAFE – WILL NOT BREAK TOGGLE)
-================================================== */
-document.addEventListener("DOMContentLoaded", () => {
+/* ===============================
+   EMAILJS CONTACT FORM
+================================ */
+document.addEventListener("DOMContentLoaded", function () {
 
-  // Initialize EmailJS safely
   if (typeof emailjs !== "undefined") {
-    emailjs.init("VQ_WftGl4WBoSxZT5");
-    console.log("✅ EmailJS loaded");
+    emailjs.init("LsigqU-7PssVcFenI"); // ✅ your public key
+    console.log("✅ EmailJS initialized");
   } else {
-    console.warn("⚠️ EmailJS NOT loaded");
+    console.error("❌ EmailJS not loaded");
     return;
   }
 
-  const form = document.getElementById("contact-form"); // ✅ match your form ID
-  const formMsg = document.getElementById("formMsg");   // ✅ message placeholder
+  const form = document.getElementById("contact-form");
+  const formMsg = document.getElementById("formMsg");
 
-  if (!form) return;
+  if (!form) {
+    console.error("❌ Contact form not found");
+    return;
+  }
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault(); // ✅ prevents page reload
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // ⛔ stop page reload
 
-    formMsg.innerText = "Sending...";
+    formMsg.textContent = "Sending message...";
 
     emailjs
-      .send("service_xoh4gld", "template_twhcryp", {
-        name: form.user_name.value,
-        email: form.user_email.value,
+      .send("service_ak5cqex", "template_4iss5ps", {
+        user_name: form.user_name.value,
+        user_email: form.user_email.value,
         message: form.message.value,
       })
       .then(() => {
-        formMsg.innerText = "Message sent successfully 🎉";
+        formMsg.textContent = "✅ Message sent successfully!";
         form.reset();
       })
-      .catch((err) => {
-        console.error("EmailJS error:", err);
-        formMsg.innerText = "Failed to send message 😢";
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        formMsg.textContent = "❌ Failed to send message. Try again.";
       });
   });
-});
 
+});
 });
