@@ -1,4 +1,4 @@
-script.js
+
 console.log("🔥 script.js loaded");
 
 AOS.init({ once: true });
