@@ -1,16 +1,24 @@
-
-
+// ===============================
+// AOS
+// ===============================
 AOS.init({ once: true });
 
+// ===============================
+// THEME TOGGLE
+// ===============================
 const toggle = document.getElementById("themeToggle");
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  toggle.classList.toggle("fa-moon");
-  toggle.classList.toggle("fa-sun");
 
-/* ===============================
-   EMAILJS CONTACT FORM
-================================ */
+if (toggle) {
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    toggle.classList.toggle("fa-moon");
+    toggle.classList.toggle("fa-sun");
+  });
+}
+
+// ===============================
+// EMAILJS CONTACT FORM
+// ===============================
 document.addEventListener("DOMContentLoaded", () => {
   console.log("🔥 script.js loaded");
 
@@ -51,6 +59,4 @@ document.addEventListener("DOMContentLoaded", () => {
         msg.textContent = "❌ Failed to send message";
       });
   });
-});
-
 });
