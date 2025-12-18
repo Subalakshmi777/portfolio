@@ -52,4 +52,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.querySelector(".contact-form button");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      console.log("✅ Send button clicked");
+    });
+  } else {
+    console.log("❌ Button not found");
+  }
+});
+
 });
