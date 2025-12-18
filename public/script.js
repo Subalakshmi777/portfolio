@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  emailjs.init("LsigqU-7PssVcFenI");
+  emailjs.init("VQ_WftGl4WBoSxZT5");
   console.log("✅ EmailJS initialized");
 
   const form = document.getElementById("contact-form");
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     msg.textContent = "Sending...";
 
     emailjs
-      .send("service_ak5cqex", "template_4iss5ps", {
+      .send("service_xoh4gld", "template_twhcryp", {
         user_name: form.user_name.value,
         user_email: form.user_email.value,
         message: form.message.value,
