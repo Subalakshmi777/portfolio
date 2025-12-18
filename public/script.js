@@ -1,5 +1,4 @@
 
-console.log("🔥 script.js loaded");
 
 AOS.init({ once: true });
 
@@ -12,28 +11,30 @@ toggle.addEventListener("click", () => {
 /* ===============================
    EMAILJS CONTACT FORM
 ================================ */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("🔥 script.js loaded");
 
-  if (typeof emailjs !== "undefined") {
-    emailjs.init("LsigqU-7PssVcFenI"); // ✅ your public key
-    console.log("✅ EmailJS initialized");
-  } else {
+  if (!window.emailjs) {
     console.error("❌ EmailJS not loaded");
     return;
   }
 
+  emailjs.init("LsigqU-7PssVcFenI");
+  console.log("✅ EmailJS initialized");
+
   const form = document.getElementById("contact-form");
-  const formMsg = document.getElementById("formMsg");
+  const msg = document.getElementById("formMsg");
 
   if (!form) {
-    console.error("❌ Contact form not found");
+    console.error("❌ contact-form not found");
     return;
   }
 
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); // ⛔ stop page reload
+    e.preventDefault();
+    console.log("📨 Form submit triggered");
 
-    formMsg.textContent = "Sending message...";
+    msg.textContent = "Sending...";
 
     emailjs
       .send("service_ak5cqex", "template_4iss5ps", {
@@ -42,26 +43,14 @@ document.addEventListener("DOMContentLoaded", function () {
         message: form.message.value,
       })
       .then(() => {
-        formMsg.textContent = "✅ Message sent successfully!";
+        msg.textContent = "✅ Message sent successfully!";
         form.reset();
       })
       .catch((error) => {
-        console.error("EmailJS Error:", error);
-        formMsg.textContent = "❌ Failed to send message. Try again.";
+        console.error("❌ EmailJS error:", error);
+        msg.textContent = "❌ Failed to send message";
       });
   });
-
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.querySelector(".contact-form button");
-  if (btn) {
-    btn.addEventListener("click", () => {
-      console.log("✅ Send button clicked");
-    });
-  } else {
-    console.log("❌ Button not found");
-  }
 });
 
 });
