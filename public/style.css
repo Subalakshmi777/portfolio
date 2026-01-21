@@ -681,9 +681,29 @@ h2 i, h3 i, h4 i {
   vertical-align: middle;
 }
 
-/* Make Skills & Projects text same as About section */
-.skill-card,
-.project-card {
+/* =====================
+   DARK MODE TEXT FIX
+===================== */
+
+/* Section titles (Technical Skills heading) */
+body.dark .section-title {
+  color: #f3f3f3;
+}
+
+/* Skills & Projects card text */
+body.dark .skill-card,
+body.dark .project-card {
   color: var(--muted);
+}
+
+/* Card headings */
+body.dark .skill-card h4,
+body.dark .project-card h4 {
+  color: #ffffff;
+}
+
+/* Skill tags (chips) text */
+body.dark .tags span {
+  color: #e0e0ff;
 }
 
