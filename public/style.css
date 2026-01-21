@@ -680,3 +680,10 @@ section:nth-of-type(odd) .section-title {
 h2 i, h3 i, h4 i {
   vertical-align: middle;
 }
+
+/* Make Skills & Projects text same as About section */
+.skill-card,
+.project-card {
+  color: var(--muted);
+}
+
