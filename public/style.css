@@ -406,6 +406,9 @@ body.dark .tags span {
   box-shadow: var(--shadow);
 }
 
+.projects{
+   background: rgba(124, 58, 237, 0.25);
+}
 /* =========================
    CERTIFICATIONS TIMELINE
 ========================= */
